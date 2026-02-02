@@ -1,31 +1,33 @@
 import 'dart:io';
 
-double promedio(double a, double b, double c) {
-  return (a + b + c) / 3;
+double calcularPromedio(double n1, double n2, double n3) {
+  return (n1 + n2 + n3) / 3;
 }
 
 void main() {
-  print('Nombre del estudiante:');
+  print('Ingrese el nombre del estudiante:');
   String nombre = stdin.readLineSync()!;
 
-  print('Nota 1:');
-  double n1 = double.parse(stdin.readLineSync()!);
+  print('Ingrese la primera calificación:');
+  double nota1 = double.parse(stdin.readLineSync()!);
 
-  print('Nota 2:');
-  double n2 = double.parse(stdin.readLineSync()!);
+  print('Ingrese la segunda calificación:');
+  double nota2 = double.parse(stdin.readLineSync()!);
 
-  print('Nota 3:');
-  double n3 = double.parse(stdin.readLineSync()!);
+  print('Ingrese la tercera calificación:');
+  double nota3 = double.parse(stdin.readLineSync()!);
 
-  double resultado = promedio(n1, n2, n3);
+  double promedio = calcularPromedio(nota1, nota2, nota3);
 
-  if (resultado >= 70) {
-    print('\n$nombre');
-    print('Promedio: $resultado');
-    print('Aprobado');
+  String condicion;
+  if (promedio >= 70) {
+    condicion = 'Aprobado';
   } else {
-    print('\n$nombre');
-    print('Promedio: $resultado');
-    print('Reprobado');
+    condicion = 'Reprobado';
   }
+
+  print('\n--- Resultado ---');
+  print('Nombre del estudiante: $nombre');
+  print('Promedio: ${promedio.toStringAsFixed(2)}');
+  print('Condición académica: $condicion');
 }
